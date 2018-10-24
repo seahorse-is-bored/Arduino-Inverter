@@ -1,5 +1,4 @@
  #include <Arduino.h>
-
 /*
 Title: Inverter
 Author : Benjamin Brown
@@ -25,21 +24,18 @@ void setup()
 
 }
 
-class WriteTo
+void PullDown()
 {
-  public:
-    void Zero(){
-      analogWrite(led1, 0);
-      analogWrite(led2, 0);
-      analogWrite(led3, 0);
-      analogWrite(led4, 0);
-      analogWrite(led5, 0);
-      analogWrite(led6, 0);
-    }
-};
+  analogWrite(led1, 0);
+  analogWrite(led2, 0);
+  analogWrite(led3, 0);
+  analogWrite(led4, 0);
+  analogWrite(led5, 0);
+  analogWrite(led6, 0);
+}
+
 void loop()
 {
-  WriteTo writeTo;
   float Frequency;
   int MaxFrequency;
   int Time;
@@ -53,7 +49,7 @@ void loop()
     PulseWidth = (Time/Frequency)/6;
     if (Input <= 14)
     {
-      writeTo.Zero();
+      PullDown();
     }
     else
     {
